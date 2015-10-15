@@ -1,0 +1,37 @@
+Make to have SASS, Bower and Grunt (and Grunt-CLI) installed to download project required files and folders. Once you have the
+required tools, from a the Terminal run "npm install" and "bower install" on the project directory.
+
+
+You can grab all the tools from: https://www.npmjs.com
+Node-SASS: https://github.com/sass/node-sass
+
+
+Commands:
+
+	- To watch SASS files and compile at the same time
+		- 'grunt'
+
+	- To compile SASS files
+		- 'grunt-build'
+
+	- To compile JS files
+		- 'grunt uglify'
+
+
+
+
+You can configure the themes break points, colors, fonts and more in the '_settings.scss' file located inside the 'sass' folder.
+
+
+
+Structure:
+	
+	- SRC:
+		
+		- stylesheets:
+			
+			- modules: reserved for Sass code that doesn't cause Sass to actually output CSS. Things like mixin declarations, functions, and variables.
+
+			- partials: directory is where the meat of my CSS is constructed. 
+
+			- vendor: is for third-party CSS.

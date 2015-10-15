@@ -1,0 +1,19 @@
+{
+    "name": "SquarePixl",
+    "version": "1.0.0",
+    "authors": [
+        "Irvin Dominguez"
+    ],
+    "description": "A personal websites.",
+    "license": "ISC",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "bourbon": "~4.2.1",
+        "susy": "~2.2.2"
+    }
+}

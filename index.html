@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Force IE to use the latest rendering engine -->
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta charset="utf-8">
+
+    <title>SquarePixl</title>
+
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+
+    <!-- JavaScript -->
+    <script src="assets/js/vendor/modernizr.min.js"></script>
+    <script>
+        Modernizr.load([
+            {
+                // If Media Queries not supported
+                test: Modernizr.mq('only all'),
+                nope: 'assets/js/respond.min.js'
+            },
+            {
+                // If SVGs not supported
+                test: Modernizr.svg,
+                nope: ['assets/js/svg4everybody.min.js', 'ielt8!assets/js/svg4everybody.ie.min.js']
+            },
+
+        ]);
+    </script>
+
+
+</head>
+<body>
+
+
+
+    <!--[if lt IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+
+    <!-- Site header / navigation -->
+    <div class="header">
+
+
+        <!-- Site logo -->
+        <div class="header__logo">
+        </div>
+
+
+        <!-- Main navigation menu -->
+        <nav class="site-nav" role="navigation">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Bio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+
+    <!-- Introduction header -->
+    <div class="intro">
+    </div>
+
+
+    
+    <!-- Main content -->
+    <main role="main">
+
+
+
+
+        <!-- About me -->
+        <section class="section  about-me">
+
+
+            <img class="about-me__avatar" src="" alt="This is me, Irvin.">
+
+
+            <h1 class="section__title small">A little bit about myself</h1>
+
+
+            <div class="about-me__bio">
+                <p>My name is Irvin. I’m a developer so I build awesome things – websites, mostly – for small business and individuals. I’m passionate about web design / developement. I’m also the founder of <a href="http://squarepixl.com">SquarePixl</a>.</p>
+                
+                <p>I spend my free time hiking, exploring the city, and building all sorts of cool stuff.</p>
+            </div>
+
+
+            <div class="social-icons">
+            </div>
+
+
+        </section><!-- / About me -->
+
+
+
+
+        <!-- Skills -->
+        <section class="section  skills">
+            
+
+            <h1 class="section__title">What I can do</h1>
+
+
+            <div class="skill">
+
+                <div class="skill__summary  pull-left">
+                    <h2>Build awesome websites</h2>
+                    <p>I’m a developer, so I know how to create beautiful websites that run across multiple devices using the latest and best technologies tailored just for your needs. I’m experienced with various languages, frameworks, and content mangagement systems.</p>
+                </div>
+
+                <div class="skill__img  pull-right">
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill__summary  pull-right">
+                    <h2>Mobile web app / site</h2>
+                    <p>Need to reach people on the go? I build fast, beautiful, responsive mobile web apps / sites.</p>
+                </div>
+
+                <div class="skill__img  pull-left">
+                </div>
+
+            </div>
+
+
+        </section><!-- / Skills -->
+
+
+
+
+        <!-- Projects -->
+        <section class="section  projects">
+
+
+            <h1 class="section__title">Projects you should check out</h1>
+            
+
+            <div class="projects-preview">
+
+                <div class="project-preview">
+                    <img class="project-preview__img"></div>
+                    <div class="project-preview__title">Paradise Construction</div>
+                </div>
+
+                <div class="project-preview">
+                    <img class="project-preview__img"></div>
+                    <div class="project-preview__title">A cool project</div>
+                </div>
+
+                <div class="project-preview">
+                    <img class="project-preview__img"></div>
+                    <div class="project-preview__title">Another cool project</div>
+                </div>
+
+            </section>
+
+
+        </section><!-- / Projects -->
+
+
+
+
+        <!-- Contact me -->
+        <section class="section  contact">
+
+
+            <h1 class="section__title">Let's talk</h1>
+            <p class="section__desc">I want to hear about your next project. Let's get in touch to get the ball rolling.</p>
+            
+
+            <div class="contact__form">
+            </div>
+
+
+            <div class="contact__other-ways">
+               
+                <p>Contact aren't your thing? Shoot me an <a href="mailto: irvindominguez1@gmail.com">email</a> or find me online:</p>
+
+                <div class="social-icons--light">
+                </div>
+
+            </div>
+
+
+        </section><!-- / Contact me -->
+
+
+
+
+    </main>
+
+    
+
+    <!-- Site footer -->
+    <footer role="footer">
+        <p>Designed with <span class="heart"></span> by Irvin. All rights reserved.</p>
+    </footer>
+
+
+
+</body>
+</html>

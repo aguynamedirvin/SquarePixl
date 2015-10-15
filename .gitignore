@@ -1,0 +1,6 @@
+thumbs/
+content/
+bower_components/
+node_modules/
+
+.sass-cache
