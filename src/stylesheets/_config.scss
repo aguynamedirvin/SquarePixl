@@ -1,0 +1,45 @@
+// Grid
+$container: 1060px;
+
+$susy: (
+	columns: 12,
+	container: $container,
+	global-box-sizing: border-box,
+	use-custom: (
+		box-sizing: false
+	),
+);
+
+// Break Points
+$break-small: 380px; // Mobile Devices such as phones
+$break-medium: 868px; // Small Screen Devices
+$break-big: $container; // Large Screen Devices
+
+// UI Colors
+$primary-color: #2D82B3; // Blue
+$black: #4B4B4B;
+$light-black: #797979;
+$grey: #D6D6D6;
+$light-grey: #F6F6F6;
+
+// Fonts
+$font-family: 'Libre Baskerville', serif; // Default body font
+$heading-family: 'Oswald', sans-serif;; // Default heading font
+$nav-family: $heading-family;
+$button-family: $heading-family;
+$form-font: inherit; // Default form font
+
+$font-color: $black;
+$heading-color: $light-black;
+$heading-font-weight: 400;
+
+
+// Links
+$link-color: $primary-color; // Link color
+$link-hover: darken($link-color, 10); // Link color on hover
+$link-decoration: none; // Link decoration
+
+
+// Navigation
+$nav-link: #ffffff;
+$nav-hover-link: #a0a0a0;

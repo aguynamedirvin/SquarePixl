@@ -2,5 +2,6 @@ thumbs/
 content/
 bower_components/
 node_modules/
+assets/
 
 .sass-cache

@@ -1,0 +1,32 @@
+/*
+	Animate.css - http://daneden.me/animate
+	Version - 3.4.0
+	Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+	Copyright (c) 2015 Daniel Eden */
+
+.animated 
+	@include animation-duration(1s)
+	@include animation-fill-mode(both)
+
+
+.animated.infinite 
+	@include animation-iteration-count(infinite)
+
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@include keyframes(pulse)
+	from
+		@include transform(scale3d(1, 1, 1))
+
+
+	50%
+		@include transform(scale3d(1.05, 1.05, 1.05))
+
+
+	to
+		@include transform(scale3d(1, 1, 1))
+
+
+.pulse
+	@include animation-name(pulse)

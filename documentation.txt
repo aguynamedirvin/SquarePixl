@@ -29,6 +29,8 @@ Structure:
 	- SRC:
 		
 		- stylesheets:
+
+			- config: where the configuration file is located
 			
 			- modules: reserved for Sass code that doesn't cause Sass to actually output CSS. Things like mixin declarations, functions, and variables.
 

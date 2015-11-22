@@ -1,0 +1,20 @@
+%clearfix
+	@include clearfix
+
+.pull-left
+	float: left !important
+.pull-right
+	float: right !important 
+
+
+/* ------------------------------------
+	Grid
+ ------------------------------------*/
+
+.wrap
+	max-width: 95%
+	margin: 0 auto
+	@extend %clearfix
+
+	@media (min-width: $break-big)
+		@include container

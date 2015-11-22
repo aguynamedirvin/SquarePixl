@@ -71,7 +71,7 @@
 
 
     <!-- Introduction header -->
-    <div class="intro">
+    <div class="intro" style="background: blue; height: 300px">
     </div>
 
 
@@ -81,123 +81,163 @@
 
 
 
-
-        <!-- About me -->
-        <section class="section  about-me">
-
-
-            <img class="about-me__avatar" src="" alt="This is me, Irvin.">
+        <!-- Lets wrap up the content -->
+        <div class="wrap">
 
 
-            <h1 class="section__title small">A little bit about myself</h1>
+
+            <!-- About me -->
+            <section class="section  about-section">
 
 
-            <div class="about-me__bio">
-                <p>My name is Irvin. I’m a developer so I build awesome things – websites, mostly – for small business and individuals. I’m passionate about web design / developement. I’m also the founder of <a href="http://squarepixl.com">SquarePixl</a>.</p>
+                <img class="about-section__avatar" src="assets/images/me.jpg" alt="This is me, Irvin.">
+
+
+                <div class="about-section__about">
+
+                    <h1 class="section__title small">A little bit about myself</h1>
+
+
+                    <div class="about-section__bio">
+                        <p>My name is Irvin. I’m a developer so I build awesome things – websites, mostly – for small business and individuals. I’m passionate about web design / developement. I’m also the founder of <a href="http://squarepixl.com">SquarePixl</a>.</p>
+                        
+                        <p>I spend my free time hiking, exploring the city, and building all sorts of cool stuff.</p>
+                    </div>
+
+
+                    <div class="social-icons">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-github"></i></a>
+                        <a href="#"><i class="fa fa-envelope"></i></a>
+                    </div>
+
+                </div>
+
+
+            </section><!-- / About me -->
+
+
+
+
+            <div class="divider"></div>
+
+
+
+
+            <!-- Skills -->
+            <section class="section  skills-section">
                 
-                <p>I spend my free time hiking, exploring the city, and building all sorts of cool stuff.</p>
-            </div>
+
+                <h1 class="section__title">What I can do</h1>
 
 
-            <div class="social-icons">
-            </div>
+                <div class="skill">
+
+                    <div class="skill__img  mac right"></div>
+
+                    <div class="skill__summary left">
+                        <h2>Build awesome websites</h2>
+                        <p>I’m a developer, so I know how to create beautiful websites that run across multiple devices using the latest and best technologies tailored just for your needs. I’m experienced with various languages, frameworks, and content mangagement systems.</p>
+                    </div>
+
+                </div>
 
 
-        </section><!-- / About me -->
+                <div class="skill">
+
+                    <div class="skill__img  iphone  left"></div>
+
+                    <div class="skill__summary  right">
+                        <h2>Mobile web app / site</h2>
+                        <p>Need to reach people on the go? I build fast, beautiful, responsive mobile web apps / sites.</p>
+                    </div>
+
+                </div>
+
+
+            </section><!-- / Skills -->
 
 
 
 
-        <!-- Skills -->
-        <section class="section  skills">
+            <div class="divider"></div>
             
 
-            <h1 class="section__title">What I can do</h1>
 
 
-            <div class="skill">
-
-                <div class="skill__summary  pull-left">
-                    <h2>Build awesome websites</h2>
-                    <p>I’m a developer, so I know how to create beautiful websites that run across multiple devices using the latest and best technologies tailored just for your needs. I’m experienced with various languages, frameworks, and content mangagement systems.</p>
-                </div>
-
-                <div class="skill__img  pull-right">
-                </div>
-
-            </div>
+            <!-- Projects -->
+            <section class="section  projects-section">
 
 
-            <div class="skill">
+                <h1 class="section__title">Projects you should check out</h1>
+                
 
-                <div class="skill__summary  pull-right">
-                    <h2>Mobile web app / site</h2>
-                    <p>Need to reach people on the go? I build fast, beautiful, responsive mobile web apps / sites.</p>
-                </div>
+                <div class="projects-preview">
 
-                <div class="skill__img  pull-left">
-                </div>
+                    <div class="project-preview">
+                        <img class="project-preview__img" src="http://placehold.it/350x290">
+                        <h2 class="project-preview__title">Paradise Construction</h2>
+                    </div>
 
-            </div>
+                    <div class="project-preview">
+                        <img class="project-preview__img" src="http://placehold.it/350x290">
+                        <h2 class="project-preview__title">A cool project</h2>
+                    </div>
 
+                    <div class="project-preview">
+                        <img class="project-preview__img" src="http://placehold.it/350x290">
+                        <h2 class="project-preview__title">Another cool project</h2>
+                    </div>
 
-        </section><!-- / Skills -->
-
-
-
-
-        <!-- Projects -->
-        <section class="section  projects">
-
-
-            <h1 class="section__title">Projects you should check out</h1>
-            
-
-            <div class="projects-preview">
-
-                <div class="project-preview">
-                    <img class="project-preview__img"></div>
-                    <div class="project-preview__title">Paradise Construction</div>
-                </div>
-
-                <div class="project-preview">
-                    <img class="project-preview__img"></div>
-                    <div class="project-preview__title">A cool project</div>
-                </div>
-
-                <div class="project-preview">
-                    <img class="project-preview__img"></div>
-                    <div class="project-preview__title">Another cool project</div>
-                </div>
-
-            </section>
+                </section>
 
 
-        </section><!-- / Projects -->
+            </section><!-- / Projects -->
+
+
+
+
+        </div><!-- / Wrap -->
 
 
 
 
         <!-- Contact me -->
-        <section class="section  contact">
+        <section class="section  contact-section">
 
 
             <h1 class="section__title">Let's talk</h1>
             <p class="section__desc">I want to hear about your next project. Let's get in touch to get the ball rolling.</p>
             
 
-            <div class="contact__form">
-            </div>
+            <div class="wrap">
 
+                <div class="contact-section__form">
+                    <form>
+                        <input type="text" placeholder="Name*" required>
+                        <input type="text" placeholder="Email*" required>
 
-            <div class="contact__other-ways">
-               
-                <p>Contact aren't your thing? Shoot me an <a href="mailto: irvindominguez1@gmail.com">email</a> or find me online:</p>
+                        <textarea placeholder="Message*" required></textarea>
 
-                <div class="social-icons--light">
+                        <input class="pull-right" type="submit" value="Send">
+                    </form>
                 </div>
 
-            </div>
+
+                <div class="contact-section__other-ways">
+                   
+                    <p>Contact forms aren't your thing? Shoot me an <a href="mailto: irvindominguez1@gmail.com">email</a> or find me online:</p>
+
+                    <div class="social-icons social-icons--light">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-github"></i></a>
+                        <a href="#"><i class="fa fa-envelope"></i></a>
+                    </div>
+
+                </div>
+
+
+            </div><!-- / Contact Section Content Wrap -->
 
 
         </section><!-- / Contact me -->
@@ -205,14 +245,50 @@
 
 
 
-    </main>
+    </main><!-- / Main content -->
 
     
 
+
     <!-- Site footer -->
     <footer role="footer">
-        <p>Designed with <span class="heart"></span> by Irvin. All rights reserved.</p>
+        <p>Designed with <span class="heart animated infinite pulse"></span> by Irvin. All rights reserved.</p>
     </footer>
+
+
+
+
+    <!-- JavaScript -->
+    <script>
+        Modernizr.load([
+            // Load jQuery
+            {
+                load: 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+                complete: function () {
+                    yepnope.errorTimeout = 5000;
+                    if ( !window.jQuery ) {
+                        Modernizr.load('assets/js/vendor/jquery-1.11.3.min.js');
+                    }
+                }
+            },
+        ]);
+        // Download fonts
+        WebFontConfig = {
+            google: {
+                families: [ 'Libre+Baskerville::latin', 'Oswald::latin' ]
+            },
+            custom: {
+                families: ['FontAwesome'],
+                urls: ['http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css']
+            }
+        };
+        (function(d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
 
 
 
