@@ -2,12 +2,12 @@
 $container: 1060px;
 
 $susy: (
-	columns: 12,
-	container: $container,
-	global-box-sizing: border-box,
-	use-custom: (
-		box-sizing: false
-	),
+    columns: 12,
+    container: $container,
+    global-box-sizing: border-box,
+    use-custom: (
+        box-sizing: false
+    ),
 );
 
 // Break Points
@@ -16,7 +16,7 @@ $break-medium: 868px; // Small Screen Devices
 $break-big: $container; // Large Screen Devices
 
 // UI Colors
-$primary-color: #2D82B3; // Blue
+$primary-color: #3683BB; // Blue
 $black: #4B4B4B;
 $light-black: #797979;
 $grey: #D6D6D6;

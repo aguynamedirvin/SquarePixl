@@ -50,20 +50,24 @@
     <div class="header">
 
 
-        <!-- Site logo -->
-        <div class="header__logo">
-        </div>
+            <!-- Site logo -->
+            <div class="header__logo">
+            </div>
+
+            
+            <!-- Hamburger menu toffgle -->
+            <div class="hamburger"></div>
 
 
-        <!-- Main navigation menu -->
-        <nav class="site-nav" role="navigation">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Bio</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+            <!-- Main navigation menu -->
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Bio</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
 
 
     </div>
@@ -71,13 +75,16 @@
 
 
     <!-- Introduction header -->
-    <div class="intro" style="background: blue; height: 300px">
+    <div class="intro">
+        <div class="scroller animated infinite pulse">
+            <!--<i class="fa fa-angle-double-down"></i>-->
+        </div>
     </div>
 
 
     
     <!-- Main content -->
-    <main role="main">
+    <main>
 
 
 
@@ -127,8 +134,9 @@
             <!-- Skills -->
             <section class="section  skills-section">
                 
-
-                <h1 class="section__title">What I can do</h1>
+                <div class="section__meta">
+                    <h1 class="section__title">What I can do</h1>
+                </div>
 
 
                 <div class="skill">
@@ -168,28 +176,35 @@
             <!-- Projects -->
             <section class="section  projects-section">
 
-
-                <h1 class="section__title">Projects you should check out</h1>
+                <div class="section__meta">
+                    <h1 class="section__title">Projects you should check out</h1>
+                </div>
                 
 
                 <div class="projects-preview">
 
                     <div class="project-preview">
-                        <img class="project-preview__img" src="http://placehold.it/350x290">
-                        <h2 class="project-preview__title">Paradise Construction</h2>
+                        <a href="http://paradiseconstructionep.com/">
+                            <img class="project-preview__img" src="assets/images/paradise.png" alt="Paradise Construction">
+                            <h2 class="project-preview__title">Paradise Construction</h2>
+                        </a>
                     </div>
 
                     <div class="project-preview">
-                        <img class="project-preview__img" src="http://placehold.it/350x290">
-                        <h2 class="project-preview__title">A cool project</h2>
+                        <a href="#">
+                            <img class="project-preview__img" src="http://placehold.it/350x290" alt="A Cool Project">
+                            <h2 class="project-preview__title">A cool project</h2>
+                        </a>
                     </div>
 
                     <div class="project-preview">
-                        <img class="project-preview__img" src="http://placehold.it/350x290">
-                        <h2 class="project-preview__title">Another cool project</h2>
+                        <a href="#">
+                            <img class="project-preview__img" src="http://placehold.it/350x290" alt="Another Cool Project">
+                            <h2 class="project-preview__title">Another cool project</h2>
+                        </a>
                     </div>
 
-                </section>
+                </div>
 
 
             </section><!-- / Projects -->
@@ -205,17 +220,18 @@
         <!-- Contact me -->
         <section class="section  contact-section">
 
+        <div class="wrap">
 
-            <h1 class="section__title">Let's talk</h1>
-            <p class="section__desc">I want to hear about your next project. Let's get in touch to get the ball rolling.</p>
-            
-
-            <div class="wrap">
+                <div class="section__meta">
+                    <h1 class="section__title">Let's talk</h1>
+                    <p class="section__desc">I want to hear about your next project. Let's get in touch to get the ball rolling.</p>
+                </div>
+                
 
                 <div class="contact-section__form">
                     <form>
                         <input type="text" placeholder="Name*" required>
-                        <input type="text" placeholder="Email*" required>
+                        <input type="email" placeholder="Email*" required>
 
                         <textarea placeholder="Message*" required></textarea>
 
@@ -237,7 +253,7 @@
                 </div>
 
 
-            </div><!-- / Contact Section Content Wrap -->
+            </div>
 
 
         </section><!-- / Contact me -->
@@ -251,8 +267,8 @@
 
 
     <!-- Site footer -->
-    <footer role="footer">
-        <p>Designed with <span class="heart animated infinite pulse"></span> by Irvin. All rights reserved.</p>
+    <footer>
+        <p>Crafted with <span class="heart animated infinite pulse"></span> by Irvin. All rights reserved.</p>
     </footer>
 
 

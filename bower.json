@@ -13,7 +13,7 @@
         "bower_components"
     ],
     "dependencies": {
-        "bourbon": "~4.2.1",
-        "susy": "~2.2.2"
+        "bourbon": "~4.2.6",
+        "susy": "~2.2.6"
     }
 }

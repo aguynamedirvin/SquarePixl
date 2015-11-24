@@ -1,0 +1,39 @@
+.header
+	position: fixed
+	padding: 2rem 0
+	width: 100%
+
+	display: none
+
+	@media screen and (min-width: $break-medium)
+		@extend .wrap
+
+/* Main Navigation Menu */
+.site-nav
+	background: #000
+	text-align: center
+	font-family: $heading-family
+
+	ul
+		display: block
+		list-style: none
+		margin: 0
+		padding: 0
+
+	li
+		display: block
+		padding: 1.5rem 4rem
+
+		a
+			color: #fff
+
+	@media screen and (min-width: $break-medium)
+		background: none
+		display: inline-block
+		float: right
+		text-align: left
+
+		li
+			display: inline-block
+			margin-left: 4rem
+			padding: 0

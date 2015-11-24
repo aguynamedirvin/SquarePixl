@@ -1,15 +1,79 @@
+// Intro
+.intro
+    height: 100vh
+    background: $primary-color
+
+    /*.scroller
+        width: 100px
+        text-align: center
+        color: #fff
+        font-size: 3.5rem
+        position: absolute
+        bottom: 0
+        left: calc(50% - 100px)*/
+
+    .scroller
+        bottom: 0
+        height: 10rem
+        left: calc(50% - 5rem)
+        position: absolute
+        text-align: center
+        width: 10rem
+
+        &:before
+            bottom: 0
+            color: #fff
+            content: "\f107"
+            font-family: "FontAwesome"
+            font-size: 3.5rem
+            position: absolute
+            text-align: center
+
+
+
+// Highlight selection
+@include selection
+    background: $primary-color
+    color: #fff
+
+
 // Social Network Icon Links
 .social-icons
-	margin-top: 4rem
-	
-	a
-		color: $light-black
-		font-size: 2.5rem
-		margin-right: 2rem
+    margin-top: 4rem
+    
+    a
+        color: $black
+        font-size: 2.5rem
+        margin-right: 2rem
 
-		&:hover
-			opacity: 0.75
+        &:hover
+            opacity: 0.75
 
-	&--light
-		a
-			color: #fff
+    &--light
+        a
+            color: #fff
+
+// Divider
+.divider    
+    background: url(../images/dots.svg) center no-repeat;
+    background-size: 6.4rem 8rem;
+    height: 8rem
+    text-indent: -9999px;
+
+
+// Pulsating Heart
+.heart
+    display: inline-block
+    height: 1.5rem
+    margin: 0 3px
+    position: relative
+    width: 15px
+
+    &:before
+        color: #DC0D0D
+        content: "\f004"
+        font-family: "FontAwesome"
+        font-size: 1.5rem
+        left: 0
+        position: absolute
+        top: -4px
