@@ -8,32 +8,37 @@ Node-SASS: https://github.com/sass/node-sass
 
 Commands:
 
-	- To watch SASS files and compile at the same time
+	- To watch SASS / JS files and compile at the same time
 		- 'grunt'
 
+	- For Production
+		- 'grunt production'
+
 	- To compile SASS files
-		- 'grunt-build'
+		- 'grunt build'
 
 	- To compile JS files
 		- 'grunt uglify'
 
 
+Gruntfiles.js
+	- All tasks that have the 'build' argument are the settings that will be used for production use
 
 
-You can configure the themes break points, colors, fonts and more in the '_settings.scss' file located inside the 'sass' folder.
 
-
+You can configure the themes break points, colors, fonts and more in the '_config.scss' file located inside the 'src/stylesheets' folder.
 
 Structure:
 	
 	- SRC:
+
+		- js
+
+			- vendor: Third-party JS
+
 		
 		- stylesheets:
 
-			- config: where the configuration file is located
-			
-			- modules: reserved for Sass code that doesn't cause Sass to actually output CSS. Things like mixin declarations, functions, and variables.
+			- _config.scss: The configuration file
 
-			- partials: directory is where the meat of my CSS is constructed. 
-
-			- vendor: is for third-party CSS.
+			- vendor: Third-party CSS.

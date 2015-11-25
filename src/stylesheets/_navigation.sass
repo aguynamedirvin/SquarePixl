@@ -1,39 +1,284 @@
-.header
-	position: fixed
-	padding: 2rem 0
-	width: 100%
 
-	display: none
 
-	@media screen and (min-width: $break-medium)
-		@extend .wrap
+$color-1: #33414a // Limed Spruce
+$color-2: #7e4d7e // Strikemaster
+$color-3: #ffffff // White
 
-/* Main Navigation Menu */
-.site-nav
-	background: #000
-	text-align: center
-	font-family: $heading-family
+@mixin font-smoothing 
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
 
-	ul
-		display: block
-		list-style: none
-		margin: 0
-		padding: 0
+/* ------------------------------------
+    Header
+ ------------------------------------*/
+header
+    background-color: $color-1
+    font-family: $nav-family
+    height: 50px
+    left: 0
+    position: fixed
+    top: 0
+    width: 100%
+    z-index: 3
+    @include font-smoothing
 
-	li
-		display: block
-		padding: 1.5rem 4rem
+    /* Force Hardware Acceleration */
+    @include transform(translateZ(0))
+    @include backface-visibility(hidden)
 
-		a
-			color: #fff
+    @include transition(transform .3s)
 
-	@media screen and (min-width: $break-medium)
-		background: none
-		display: inline-block
-		float: right
-		text-align: left
+    &.nav-is-visible
+        @include transform(translateX(-260px))
+    
 
-		li
-			display: inline-block
-			margin-left: 4rem
-			padding: 0
+    &::before
+        /* never visible - this is used in jQuery to check the current MQ */ 
+        display: none
+        content: 'mobile'
+    
+
+    @media screen and (min-width: $break-medium)
+        height: 80px
+        position: absolute
+
+
+        &.nav-is-visible
+            @include transform(translateX(0))
+        
+
+        &::before
+            content: 'desktop'
+        
+    
+
+
+.logo
+    display: inline-block
+    height: 100%
+    margin-left: 15px
+    
+    /* remove jump on iOS devices - when we fire the navigation */
+    @include transform(translateZ(0))
+    @include backface-visibility(hidden)
+
+    img
+        display: block
+        max-width: 100%
+        margin-top: 14px
+    
+
+    @media screen and (min-width: $break-medium)
+        position: absolute
+        z-index: 2
+        margin-left: 5%
+
+        img
+            margin-top: 29px
+        
+    
+
+// Hamburger
+.nav-trigger
+    display: block
+    position: absolute
+    right: 0
+    top: 0
+    height: 100%
+    width: 50px
+
+    /* hide text */
+    overflow: hidden
+    white-space: nowrap
+    color: transparent
+
+    span
+        /* hamburger icon created in CSS */
+        position: absolute
+        height: 2px
+        width: 20px
+        top: 50%
+        margin-top: -1px
+        left: 50%
+        margin-left: -10px
+        @include transition(background-color .3s .3s)
+        background-color: $color-3
+
+        &::before, 
+        &::after
+            /* upper and lower lines of the menu icon */
+            content: ''
+            position: absolute
+            width: 100%
+            height: 100%
+            background-color: $color-3
+            
+            /* Force Hardware Acceleration */
+            @include transform(translateZ(0))
+            @include backface-visibility(hidden)
+            
+            @include transition(transform .3s .3s)
+        
+
+        &::before
+            @include transform(translateY(-6px))
+        
+
+        &::after
+            @include transform(translateY(6px))
+        
+    
+
+    .nav-is-visible & span
+        background-color: rgba($color-3, 0)
+    
+        &::before
+            @include transform(translateY(0) rotate(-45deg))
+        
+
+        &::after
+            @include transform(translateY(0) rotate(45deg))
+        
+    
+
+    @media screen and (min-width: $break-medium)
+        display: none
+    
+/* ------------------------------------
+    Main Navigation Menu
+ ------------------------------------*/
+.main-nav
+    -webkit-overflow-scrolling: touch
+    background: darken($color-1, 10%)
+    height: 100vh
+    list-style: none
+    margin: 0
+    overflow: auto
+    padding: 0
+    position: fixed
+    right: 0
+    top: 0
+    visibility: hidden
+    width: 260px
+    z-index: 1
+    @include transition(visibility 0s .3s)
+
+    a
+        border-bottom: 1px solid $color-1
+        color: $color-3
+        display: block
+        font:
+            family: $nav-family
+            size: 1.8rem
+        padding: .9em 2em .9em 1em
+        @include transition(transform .3s, opacity .3s)
+    
+
+    &.nav-is-visible
+        visibility: visible
+        @include transition(visibility 0s 0s)
+
+
+    @media screen and (min-width: $break-medium)
+        background: transparent
+        height: 80px
+        line-height: 80px
+        /* padding left = logo size + logo left position*/
+        padding: 0 5% 0 calc(5% + 124px)
+        position: static
+        text-align: right
+        visibility: visible
+        width: 100%
+
+        li
+            display: inline-block
+            height: 100%
+            padding: 0 .4em
+        
+
+        li a
+            border-bottom: none
+            display: inline-block
+            font-size: 1.7rem
+            line-height: 1
+            padding: .8em
+            
+            /* Prevent .subnav-trigger flicker is Safari */
+            @include transform(translateZ(0))
+            @include backface-visibility(hidden)
+            
+            @include transition(opacity .2s)
+        
+
+        li a:not(.subnav-trigger):hover
+            @include backface-visibility(hidden)
+            opacity: .6
+            
+        
+    
+
+.main-content
+    background-color: darken($color-3, 1%)
+    min-height: 100vh
+    padding-top: 50px
+    position: relative
+    z-index: 2
+    @include transition(transform .3s)
+
+    &::before
+        /* never visible - this is used in jQuery to check the current MQ */ 
+        content: 'mobile'
+        display: none
+
+        @media screen and (min-width: $break-medium)
+            content: 'desktop'
+
+    &.nav-is-visible
+        @include transform(translateX(-260px))
+    
+
+    @media screen and (min-width: $break-medium)
+        padding-top: 80px
+
+        &.nav-is-visible
+            @include transform(translateX(0))
+        
+    
+
+// Fallback for NO JavaScript 
+.no-js
+
+    .nav-trigger,
+    .subnav-trigger
+        display: none
+
+    header
+        height: auto
+        position: relative
+
+    .logo img
+        margin-bottom: 14px
+
+    .main-nav
+        position: static
+        width: 100%
+        height: auto
+        visibility: visible
+        overflow: visible
+
+        li
+            display: inline-block
+
+            &:last-child
+                display: block
+        
+
+        @media screen and (min-width: $break-medium)
+            height: 80px
+
+
+    .main-content
+        padding-top: 0
+
+        @media screen and (min-width: $break-medium)
+            padding-top: 80px

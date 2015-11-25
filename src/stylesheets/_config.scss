@@ -1,5 +1,5 @@
 // Grid
-$container: 1060px;
+$container: 860px;
 
 $susy: (
     columns: 12,
@@ -22,11 +22,14 @@ $light-black: #797979;
 $grey: #D6D6D6;
 $light-grey: #F6F6F6;
 
+// Spacing
+$spacing: 8.5rem;
+
 // Fonts
 $font-family: 'Libre Baskerville', serif; // Default body font
 $heading-family: 'Oswald', sans-serif;; // Default heading font
-$nav-family: $heading-family;
-$button-family: $heading-family;
+$nav-family: 'Droid Sans', sans-serif;
+$button-family: $nav-family;
 $form-font: inherit; // Default form font
 
 $font-color: $black;

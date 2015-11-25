@@ -3,7 +3,12 @@ module.exports = function(grunt) {
 
 		// Watch
 		watch: {
-			grunt: { files: ['Gruntfile.js'] },
+			grunt: { 
+				files: ['Gruntfile.js'],
+				options: {
+					reload: true
+				}
+			},
 
 			sass: {
 				files: ['src/stylesheets/**/*.sass', 'src/stylesheets/**/*.scss'],
@@ -12,21 +17,17 @@ module.exports = function(grunt) {
 
 			uglify: {
 				files: ['src/js/*.js'],
-				task: ['uglify']
+				tasks: ['uglify']
 			}
 		},
 
 		// SASS
 		sass: {
 			options: {
-				includePaths: [
-					'bower_components/bourbon/app/assets/stylesheets'
-				]
+				outputStyle: 'expanded',
+				includePaths: ['bower_components/bourbon/app/assets/stylesheets']
 			},
-			dist: {
-				options: {
-						outputStyle: 'expanded'
-				},
+			default: {
 				files: {
 					'assets/css/main.css': 'src/stylesheets/main.sass'
 				}
@@ -34,9 +35,9 @@ module.exports = function(grunt) {
 		},
 
 
-    	// Uglify
+    	// Uglify - JavaScript Combiner / Compresser 
     	uglify: {
-			build: {
+			default: {
 				/*options: {
 					beautify: {
 						width: 80,
@@ -46,7 +47,7 @@ module.exports = function(grunt) {
 				files: {
 
 					// Main
-					'assets/js/main.min.js': ['src/js/svg4everybody.js'],
+					'assets/js/main.min.js': ['src/js/navigation.js', 'src/js/smoothscroll.js', 'src/js/svg4everybody.js'],
 
 
 					// For mobile
@@ -63,7 +64,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// SVG STORE
+		// SVG STORE - Crate SVG Sprite
 		svgstore: {
 			options: {
 				prefix : 'icon-', // This will prefix each ID
@@ -80,33 +81,47 @@ module.exports = function(grunt) {
 		},
 
 
+		// Combine Media Queries
+		cmq: {
+			default: {
+				files: {
+					'assets/css/main.css': ['assets/css/main.css']
+				}
+			}
+		},
+
+
+		// Add Fallback units for older browsers
 		postcss: {
 			options: {
 				processors: [
 					require('pixrem')(), // add fallbacks for rem units
-					require('autoprefixer')({browsers: ['last 2 versions', 'ie 8', 'ie 9', 'Android 2.3']}), // add vendor prefixes
-					require('cssnano')(), // minify the result
+					//require('autoprefixer')({browsers: ['last 2 versions', 'ie 8', 'ie 9', 'Android 2.3']}), // add vendor prefixes
+					//require('cssnano')(), // minify the result
 				]
 			},
-			dist: {
+			default: {
 				src: 'assets/css/main.css'
 			}
 		},
 
+
+		// Minify Our CSS
 		cssmin: {
-		// the combine task
-			combine: {
-				files: {
-					'assets/css/main.css': ['src/css/normalize.css', 'assets/css/main.css']
-				}
+			default: {
+				files: [{
+					expand: true,
+					cwd: 'assets/css',
+					src: ['*.css', '!*.min.css'],
+					dest: 'assets/css',
+					ext: '.min.css'
+				}]
+				/*files: {
+					'assets/css/main.css': ['assets/css/main.css']
+				}*/
 			},
-			/*minify: {
-				files: {
-					'cleaned/css/app-cleaned.min.css': ['cleaned/css/app-cleaned.css']
-				}
-			}*/
 		},
-		
+
 	});
 
 
@@ -118,17 +133,18 @@ grunt.loadNpmTasks('grunt-sass');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-svgstore');
+grunt.loadNpmTasks('grunt-combine-media-queries');
 grunt.loadNpmTasks('grunt-postcss');
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 
-// Build Our SASS
+// Quick Compilation - Build Our SASS
 grunt.registerTask('build', ['sass']);
 
-// Watch Our SASS Files
+// Developement - Watch & Build Our SASS Files
 grunt.registerTask('default', ['build', 'watch']);
 
-// Ready For Production
-grunt.registerTask('production', ['build', 'uglify', 'svgstore', 'cssmin', 'postcss']);
+// Production - Build the files for production use
+grunt.registerTask('production', ['build', 'uglify', 'svgstore', 'cmq', 'postcss', 'cssmin']);
 
 };

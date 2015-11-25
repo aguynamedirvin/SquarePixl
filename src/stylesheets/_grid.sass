@@ -1,14 +1,20 @@
 %clearfix
 	@include clearfix
 
+
 .pull-left
 	float: left !important
 .pull-right
 	float: right !important 
 
 
+@media screen and (max-width: $break-medium)
+	.hide-md
+		display: none
+
+
 /* ------------------------------------
-	Grid
+    Grid
  ------------------------------------*/
 
 .wrap
@@ -16,5 +22,5 @@
 	margin: 0 auto
 	@extend %clearfix
 
-	@media (min-width: $break-big)
+	@media (min-width: $break-medium)
 		@include container

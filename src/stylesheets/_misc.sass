@@ -1,34 +1,26 @@
+/* ------------------------------------
+    Miscellaneous
+ ------------------------------------*/
+
 // Intro
 .intro
-    height: 100vh
+    height: calc(100vh - 80px)
     background: $primary-color
+    margin-bottom: 8.5rem
+    position: relative
 
-    /*.scroller
+    .scroller
         width: 100px
         text-align: center
         color: #fff
         font-size: 3.5rem
         position: absolute
         bottom: 0
-        left: calc(50% - 100px)*/
-
-    .scroller
-        bottom: 0
-        height: 10rem
-        left: calc(50% - 5rem)
-        position: absolute
-        text-align: center
-        width: 10rem
-
-        &:before
-            bottom: 0
+        // Position in middle of screen. 50% of screen minus half of container = 50 = 100/2
+        left: calc(50% - 50px)
+        
+        a
             color: #fff
-            content: "\f107"
-            font-family: "FontAwesome"
-            font-size: 3.5rem
-            position: absolute
-            text-align: center
-
 
 
 // Highlight selection
@@ -39,11 +31,16 @@
 
 // Social Network Icon Links
 .social-icons
+    font-size: 4.5rem
     margin-top: 4rem
+    text-align: center
+
+    @media screen and (min-width: $break-medium)
+        font-size: 2.5rem
+        text-align: left
     
     a
         color: $black
-        font-size: 2.5rem
         margin-right: 2rem
 
         &:hover
@@ -52,6 +49,7 @@
     &--light
         a
             color: #fff
+
 
 // Divider
 .divider    
