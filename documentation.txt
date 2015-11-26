@@ -21,8 +21,28 @@ Commands:
 		- 'grunt uglify'
 
 
+
 Gruntfiles.js
 	- All tasks that have the 'build' argument are the settings that will be used for production use
+
+
+
+Third-Party Plugins Used:
+	
+	- Vivus: https://github.com/maxwellito/vivus
+		- JavaScript library to make drawing animation on SVG
+
+	- SmoothScroll: https://github.com/cferdinandi/smooth-scroll
+		- Script to animate scrolling to anchor links
+
+	- Fastclick: https://github.com/ftlabs/fastclick
+		- Eliminates the 300ms delay between a physical tap and the firing of a click event on mobile browsers
+
+	- Respond: https://github.com/scottjehl/Respond
+		- Polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
+
+	- SVG4Everybody: https://github.com/jonathantneal/svg4everybody
+		- Adds SVG External Content support to all browsers
 
 
 
@@ -36,7 +56,6 @@ Structure:
 
 			- vendor: Third-party JS
 
-		
 		- stylesheets:
 
 			- _config.scss: The configuration file
