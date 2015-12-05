@@ -1,17 +1,22 @@
-Make to have SASS, Bower and Grunt (and Grunt-CLI) installed to download project required files and folders. Once you have the
-required tools, from a the Terminal run "npm install" and "bower install" on the project directory.
+Make sure to have NodeJS, SASS, Bower, and Grunt (Grunt-CLI too) installed to download all project required files. Once you have the tools, from the Terminal run "npm install" and "bower install" on the project directory to install all necessary files.
 
 
-You can grab all the tools from: https://www.npmjs.com
-Node-SASS: https://github.com/sass/node-sass
+
+You can grab all the tools here: 
+	- NodeJS: https://nodejs.org/en/
+	- Node-SASS: https://github.com/sass/node-sass (My personal favorite SASS compiler!)
+	- NPM: https://www.npmjs.com
+	- Bower: http://bower.io
+	- Grunt: http://gruntjs.com
 
 
-Commands:
 
-	- To watch SASS / JS files and compile at the same time
-		- 'grunt'
+Grunt Commands:
 
-	- For Production
+	- Default/Developement: Watches SASS / JS files and compile at the same time
+		- grunt
+
+	- Production: Use to build final release
 		- 'grunt production'
 
 	- To compile SASS files
@@ -22,12 +27,10 @@ Commands:
 
 
 
-Gruntfiles.js
-	- All tasks that have the 'build' argument are the settings that will be used for production use
-
-
-
-Third-Party Plugins Used:
+Third-Party JavaScript Plugins Used:
+	
+	- Modernizr: https://github.com/modernizr/modernizr
+		- Detects HTML5 and CSS3 features in the user’s browser
 	
 	- Vivus: https://github.com/maxwellito/vivus
 		- JavaScript library to make drawing animation on SVG
@@ -46,18 +49,25 @@ Third-Party Plugins Used:
 
 
 
+Third-Party Node Modules Used:
+	
+	- SVG Store: https://github.com/FWeinb/grunt-svgstore
+		- Merge SVGs from a folder into an SVG Sprite
+
+
+
 You can configure the themes break points, colors, fonts and more in the '_config.scss' file located inside the 'src/stylesheets' folder.
 
 Structure:
 	
+	- Gruntfiles.js
+		- All tasks that have the 'build' argument are the settings that will be used for production use
+	
 	- SRC:
 
 		- js
-
 			- vendor: Third-party JS
 
 		- stylesheets:
-
-			- _config.scss: The configuration file
-
-			- vendor: Third-party CSS.
+			- _config.scss: The configuration file of SASS variables/options
+			- vendor: Third-party CSS
