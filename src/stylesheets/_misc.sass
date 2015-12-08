@@ -4,7 +4,7 @@
 
 // Intro
 .intro
-    height: calc(100vh - 80px)
+    height: 100vh //calc(100vh - 70px) // Window height - Header height
     background: $primary-color
     margin-bottom: 8.5rem
     position: relative
@@ -16,11 +16,41 @@
         font-size: 3.5rem
         position: absolute
         bottom: 0
-        // Position in middle of screen. 50% of screen minus half of container = 50 = 100/2
-        left: calc(50% - 50px)
+        left: calc(50% - 50px) // Position in middle of screen. 50% of screen - half of container
         
         a
             color: #fff
+
+    .text
+        color: #fff
+        height: 200px
+        position: absolute
+        text-align: center
+        top: calc(50vh - 100px) // Position container vertically centered. Subtract half the height of screen - half of container
+        width: 100%
+
+        h2
+            font-size: 8.5rem
+
+        p
+            border-top: 1px solid #fff
+            display: inline-block
+            font-size: 2.6rem
+            padding: 3rem 5rem 0
+
+    .path
+        position: absolute
+        height: 350px
+        width: 275px
+
+    #path1
+        left: 0
+        bottom: 0
+
+    #path2
+        top: calc(100vh - 75%)
+        right: 0
+        //top: 150px
 
 
 // Highlight selection
@@ -53,10 +83,10 @@
 
 // Divider
 .divider    
-    background: url(../images/dots.svg) center no-repeat;
-    background-size: 6.4rem 8rem;
+    background: url(../images/dots.svg) center no-repeat
+    background-size: 6.4rem 8rem
     height: 8rem
-    text-indent: -9999px;
+    text-indent: -9999px
 
 
 // Pulsating Heart

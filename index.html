@@ -47,44 +47,51 @@
 
 
     <!-- Site header / navigation -->
-    <div class="header">
+    <header class="header">
 
+        <div class="logo"><!--<a href="#0"><img src="assets/img/logo.svg" alt="SquarePixl"></a>--></div>
 
-            <!-- Site logo -->
-            <div class="header__logo">
-            </div>
+        <nav class="main-nav-wrapper">
+            <ul class="main-nav">
+                <li><a data-scroll href="#">Home</a></li>
+                <li><a data-scroll href="#bio">Bio</a></li>
+                <li><a data-scroll href="#skills">Skills</a></li>
+                <li><a data-scroll href="#projects">Projects</a></li>
+                <li><a data-scroll href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <a href="#" class="nav-hamburger"><span></span></a>
 
-            
-            <!-- Hamburger menu toffgle -->
-            <div class="hamburger"></div>
-
-
-            <!-- Main navigation menu -->
-            <nav class="site-nav">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Bio</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-
-
-    </div>
-
-
-
-    <!-- Introduction header -->
-    <div class="intro">
-        <div class="scroller animated infinite pulse">
-            <!--<i class="fa fa-angle-double-down"></i>-->
-        </div>
-    </div>
+    </header>
 
 
     
     <!-- Main content -->
-    <main>
+    <main class="main-content">
+
+
+
+        <!-- Introduction header -->
+        <div class="intro">
+
+
+            <!-- Intro Text -->
+            <div class="text">
+                <h2>Hello.</h2>
+                <p>I'm Irvin, explorer by day, programmer by night.</p>
+            </div>
+
+
+            <!-- Paths -->
+            <div class="path" id="path1"></div>
+            <div class="path" id="path2"></div>
+
+
+            <div class="scroller animated infinite pulse">
+                <a data-scroll href="#bio"><i class="fa fa-angle-double-down"></i></a>
+            </div>
+        </div>
 
 
 
@@ -94,7 +101,7 @@
 
 
             <!-- About me -->
-            <section class="section  about-section">
+            <section id="bio" class="section  about-section">
 
 
                 <img class="about-section__avatar" src="assets/images/me.jpg" alt="This is me, Irvin.">
@@ -132,7 +139,7 @@
 
 
             <!-- Skills -->
-            <section class="section  skills-section">
+            <section id="skills" class="section  skills-section">
                 
                 <div class="section__meta">
                     <h1 class="section__title">What I can do</h1>
@@ -174,7 +181,7 @@
 
 
             <!-- Projects -->
-            <section class="section  projects-section">
+            <section id="projects" class="section  projects-section">
 
                 <div class="section__meta">
                     <h1 class="section__title">Projects you should check out</h1>
@@ -218,7 +225,7 @@
 
 
         <!-- Contact me -->
-        <section class="section  contact-section">
+        <section id="contact" class="section  contact-section">
 
         <div class="wrap">
 
@@ -230,12 +237,12 @@
 
                 <div class="contact-section__form">
                     <form>
-                        <input type="text" placeholder="Name*" required>
-                        <input type="email" placeholder="Email*" required>
+                        <input type="text" placeholder="How should I call you?" required>
+                        <input type="email" placeholder="What's your email?" required>
 
-                        <textarea placeholder="Message*" required></textarea>
+                        <textarea placeholder="What's up? Write your message in here." required></textarea>
 
-                        <input class="pull-right" type="submit" value="Send">
+                        <input class="pull-right" type="submit" value="Send message!">
                     </form>
                 </div>
 
@@ -273,25 +280,43 @@
 
 
 
-
     <!-- JavaScript -->
     <script>
+
         Modernizr.load([
             // Load jQuery
             {
-                load: 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
+                load: 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
                 complete: function () {
                     yepnope.errorTimeout = 5000;
                     if ( !window.jQuery ) {
-                        Modernizr.load('assets/js/vendor/jquery-1.11.3.min.js');
+                        Modernizr.load('assets/js/vendor/jquery-2.1.1.min.js');
                     }
+                }
+            },
+            // Load other necessary scripts
+            {
+                load: [
+                    'assets/js/main.min.js',
+                ],
+                callback: function () {
+
+                    // Smooth scroll
+                    smoothScroll.init({
+                        speed: 1268
+                    });
+
+                    // Animate SVG 
+                    //new Vivus('path1', {start: 'autostart', type: 'oneByOne', duration: 450, file: 'assets/images/path4.svg'});
+                    //new Vivus('path2', {start: 'autostart', type: 'oneByOne', duration: 450, file: 'assets/images/path2.svg'});
+
                 }
             },
         ]);
         // Download fonts
         WebFontConfig = {
             google: {
-                families: [ 'Libre+Baskerville::latin', 'Oswald::latin' ]
+                families: [ 'Libre+Baskerville::latin', 'Oswald::latin', 'Droid+Sans::latin' ]
             },
             custom: {
                 families: ['FontAwesome'],
