@@ -1,11 +1,6 @@
-// Variables
-$nav-bg: rgba(0, 0, 0, 0.9)
-$nav-menu-bg: rgba(0, 0, 0, 0.85)
-
-$nav-height: 50px
-$nav-desktop-height: 80px
-
-
+/* ------------------------------------
+    Site Header
+ ------------------------------------*/
 
 .header
     background: $nav-bg
@@ -16,7 +11,7 @@ $nav-desktop-height: 80px
     width: 100%
     z-index: 3
 
-    /* Force Hardware Acceleration */
+    // Force Hardware Acceleration
     @include transform(translateZ(0))
     @include backface-visibility(hidden)
 
@@ -26,7 +21,7 @@ $nav-desktop-height: 80px
         display: none
         content: 'mobile'
 
-    &.is-visible
+    &.nav-is-visible
         @include transform(translateX(-260px))
 
 
@@ -38,14 +33,12 @@ $nav-desktop-height: 80px
         &::before
             content: 'desktop'
 
-        &.is-visible
-            //@include transform(translateX(0))
+        &.header-is-visible
+            // if the user changes the scrolling direction, we show the header
+            @include transform(translate3d(0, 100%, 0))
 
-            /* if the user changes the scrolling direction, we show the header */
-            @include transform(translate3d(0,100%,0))
-
-        &.is-fixed 
-            /* when the user scrolls down, we hide the header right above the viewport */
+        &.header-is-fixed
+            // when the user scrolls down, we hide the header right above the viewport
             position: fixed
             top: -$nav-desktop-height
             background-color: rgba($nav-bg, .96)
@@ -53,9 +46,19 @@ $nav-desktop-height: 80px
             -moz-transition: -moz-transform 0.3s
             transition: transform 0.3s
 
+        &.nav-is-visible
+            @include transform(translateX(0))
+
+
+
+/* ------------------------------------
+    Navigation Menu
+ ------------------------------------*/
+
 .main-nav
     -webkit-overflow-scrolling: touch
     background: $nav-menu-bg
+    font-family: $nav-family
     height: 100vh
     list-style: none
     margin: 0
@@ -67,14 +70,15 @@ $nav-desktop-height: 80px
     visibility: hidden
     width: 260px
     z-index: 1
+    @include transition(visibility 0s .3s)
 
     a
-        border-bottom: 1px solid #fff
+        border-bottom: 1px solid lighten($nav-menu-bg, 40)
         color: #fff
         display: block
         padding: 0.9em 2em 0.9em 1em
 
-    &.is-visible
+    &.nav-is-visible
         visibility: visible
         -webkit-transition: visibility 0s 0s
 
@@ -107,6 +111,7 @@ $nav-desktop-height: 80px
                 @include transition(opacity .2s)
 
 
+
 .nav-hamburger
     display: block
     position: absolute
@@ -114,7 +119,7 @@ $nav-desktop-height: 80px
     top: 0
     height: 100%
     width: 50px
-    /*Hide Text */
+    // Hide Text
     overflow: hidden
     white-space: nowrap
     color: transparent
@@ -133,7 +138,8 @@ $nav-desktop-height: 80px
         background: #fff
         @include transition(background-color .3s .3s)
 
-        &::before, &::after
+        &::before, 
+        &::after
             content: ''
             position: absolute
             width: 100%
@@ -151,7 +157,7 @@ $nav-desktop-height: 80px
         &::after
             @include transform(translateY(6px))
 
-    .is-visible & span
+    .nav-is-visible & span
         background: rgba(255, 255, 255, 0)
 
         &::before
@@ -162,6 +168,10 @@ $nav-desktop-height: 80px
 
 
 
+/* ------------------------------------
+    Main Container
+ ------------------------------------*/
+
 .main-content
     background: #fefefe
     min-height: 100vh
@@ -169,9 +179,19 @@ $nav-desktop-height: 80px
     z-index: 2
     @include transition(transform .3s)
 
+    @media screen and (min-width: $break-medium)
+        //padding-top: $nav-height // Add spacing for navbar
+
+        &.nav-is-visible
+            @include transform(translateX(0))
+
     &::before
+        // never visible - this is used in jQuery to check the current MQ 
         content: 'mobile'
         display: none
 
-    &.is-visible
-        -webkit-transform: translateX(-260px)
+        @media screen and (min-width: $break-medium)
+            content: 'desktop'
+
+    &.nav-is-visible
+        @include transform(translateX(-260px))
