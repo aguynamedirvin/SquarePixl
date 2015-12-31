@@ -32,8 +32,8 @@ $nav-family: 'Droid Sans', sans-serif;
 $button-family: $nav-family;
 $form-font: inherit; // Default form font
 
-$font-color: $black;
-$heading-color: $light-black;
+$font-color: lighten($black, 10);
+$heading-color: $black;
 $heading-font-weight: 400;
 
 
@@ -46,3 +46,7 @@ $link-decoration: none; // Link decoration
 // Navigation
 $nav-link: #ffffff;
 $nav-hover-link: #a0a0a0;
+$nav-bg: #242424;
+$nav-menu-bg: #242424; //rgba(0, 0, 0, 0.85);
+$nav-height: 50px;
+$nav-desktop-height: 80px;

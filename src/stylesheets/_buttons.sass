@@ -1,7 +1,11 @@
 /* ------------------------------------
     Buttons
  ------------------------------------*/
-#{$all-buttons}
+ 
+button, 
+input[type="button"], 
+input[type="reset"], 
+input[type="submit"]
     background: $primary-color
     border-radius: 3px
     border: 0
@@ -11,7 +15,7 @@
         family: $button-family
     padding: 1.3rem 4rem
     width: 100%
-    @include transition(all .25s ease-in-out)
+    transition: all 0.25s ease-in-out
 
     @media screen and (min-width: $break-medium)
         font-size: 1.3rem
@@ -19,3 +23,6 @@
 
     &:hover
         background: darken($primary-color, 5)
+
+    &:active
+        background: darken($primary-color, 15)

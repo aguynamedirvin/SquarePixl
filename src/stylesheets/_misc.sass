@@ -1,6 +1,11 @@
 /* ------------------------------------
     Miscellaneous
  ------------------------------------*/
+.hidden
+    opacity: 0
+
+.visible
+    opacity: 1
 
 // Intro
 .intro
@@ -30,6 +35,7 @@
         width: 100%
 
         h2
+            color: #fff !important
             font-size: 8.5rem
 
         p
@@ -54,7 +60,7 @@
 
 
 // Highlight selection
-@include selection
+::selection
     background: $primary-color
     color: #fff
 

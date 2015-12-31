@@ -1,16 +1,19 @@
-%clearfix
-	@include clearfix
+@mixin clearfix
+    &:after
+        content: " "
+        display: table
+        clear: both
 
 
 .pull-left
-	float: left !important
+    float: left !important
 .pull-right
-	float: right !important 
+    float: right !important 
 
 
 @media screen and (max-width: $break-medium)
-	.hide-md
-		display: none
+    .hide-md
+        display: none
 
 
 /* ------------------------------------
@@ -18,9 +21,9 @@
  ------------------------------------*/
 
 .wrap
-	max-width: 85%
-	margin: 0 auto
-	@extend %clearfix
+    max-width: 85%
+    margin: 0 auto
+    @include clearfix
 
-	@media (min-width: $break-medium)
-		@include container
+    @media (min-width: $break-medium)
+        @include container

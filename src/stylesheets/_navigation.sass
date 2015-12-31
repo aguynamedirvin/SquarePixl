@@ -12,17 +12,17 @@
     z-index: 3
 
     // Force Hardware Acceleration
-    @include transform(translateZ(0))
-    @include backface-visibility(hidden)
+    transform: translateZ(0)
+    backface-visibility: hidden
 
-    @include transition(transform .3s)
+    transition: transform 0.3s
 
     &::before
         display: none
         content: 'mobile'
 
     &.nav-is-visible
-        @include transform(translateX(-260px))
+        transform: translateX(-260px)
 
 
     @media screen and (min-width: $break-medium)
@@ -35,19 +35,17 @@
 
         &.header-is-visible
             // if the user changes the scrolling direction, we show the header
-            @include transform(translate3d(0, 100%, 0))
+            transform: translate3d(0, 100%, 0)
 
         &.header-is-fixed
             // when the user scrolls down, we hide the header right above the viewport
             position: fixed
             top: -$nav-desktop-height
-            background-color: rgba($nav-bg, .96)
-            -webkit-transition: -webkit-transform 0.3s
-            -moz-transition: -moz-transform 0.3s
+            background-color: $nav-bg //rgba($nav-bg, .96)
             transition: transform 0.3s
 
         &.nav-is-visible
-            @include transform(translateX(0))
+            transform: translateX(0)
 
 
 
@@ -70,11 +68,11 @@
     visibility: hidden
     width: 260px
     z-index: 1
-    @include transition(visibility 0s .3s)
+    transition: visibility 0s 0.3s
 
     a
-        border-bottom: 1px solid lighten($nav-menu-bg, 40)
-        color: #fff
+        border-bottom: 1px solid lighten($nav-menu-bg, 10)
+        color: $nav-link
         display: block
         padding: 0.9em 2em 0.9em 1em
 
@@ -105,10 +103,13 @@
                 padding: .8em
                 
                 // Prevent .subnav-trigger flicker is Safari
-                @include transform(translateZ(0))
-                @include backface-visibility(hidden)
+                transform: translateZ(0)
+                backface-visibility: hidden
                 
-                @include transition(opacity .2s)
+                transition: opacity 0.3s
+
+                &:hover
+                    opacity: .6
 
 
 
@@ -136,7 +137,8 @@
         left: 50%
         margin-left: -10px
         background: #fff
-        @include transition(background-color .3s .3s)
+        
+        transition: background-color 0.3s 0.3s
 
         &::before, 
         &::after
@@ -145,26 +147,27 @@
             width: 100%
             height: 100%
             background-color: #fff
-            // Force Hardware Acceleration
-            @include transform(translateZ(0))
-            @include backface-visibility(hidden)
             
-            @include transition(transform .3s .3s)
+            // Force Hardware Acceleration
+            transform: translateZ(0)
+            backface-visibility: hidden
+            
+            transition: transform 0.3s 0.3s
 
         &::before
-            @include transform(translateY(-6px))
+            transform: translateY(-6px)
 
         &::after
-            @include transform(translateY(6px))
+            transform: translateY(6px)
 
     .nav-is-visible & span
         background: rgba(255, 255, 255, 0)
 
         &::before
-            @include transform(translateY(0) rotate(-45deg))
+            transform: translateY(0) rotate(-45deg)
 
         &::after
-            @include transform(translateY(0) rotate(45deg))
+            transform: translateY(0) rotate(45deg)
 
 
 
@@ -177,13 +180,14 @@
     min-height: 100vh
     position: relative
     z-index: 2
-    @include transition(transform .3s)
+    
+    transition: transform 0.3s
 
     @media screen and (min-width: $break-medium)
         //padding-top: $nav-height // Add spacing for navbar
 
         &.nav-is-visible
-            @include transform(translateX(0))
+            transform: translateX(0)
 
     &::before
         // never visible - this is used in jQuery to check the current MQ 
@@ -194,4 +198,6 @@
             content: 'desktop'
 
     &.nav-is-visible
-        @include transform(translateX(-260px))
+        box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5)
+        
+        transform: translateX(-260px)

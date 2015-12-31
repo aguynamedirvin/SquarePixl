@@ -1,6 +1,7 @@
-// Note:
-// html is set to 62.5% so that all the REM measurements
-// are based on 10px sizing. So basically 1.5rem=15px (:
+/** 
+    Note: HTML is set to 62.5% so that all the REM measurements
+    are based on a 10px sizing. Basically 1.5rem = 15px (=         **/
+
 *,
 *:after,
 *:before
@@ -32,9 +33,11 @@ img
 a
     color: $link-color
     text-decoration: $link-decoration
-    @include transition(all .25s ease-in-out)
     
-    &:hover, &:focus
+    transition: all 0.25s ease-in-out;
+    
+    &:hover, 
+    &:focus
         color: $link-hover
 
 q, 
@@ -42,7 +45,8 @@ blockquote
     quotes: "\201C" "\201D" "\2018" "\2019"
 
 /** Typography **/
-h1, h2, h3, h4, h5, h6 
+h1, h2, h3, h4, h5, h6
+    color: $heading-color
     font:
         family: $heading-family
         weight: $heading-font-weight
