@@ -1,160 +1,188 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+
     grunt.initConfig({
 
-        // Watch our files for changes
+
+        /**
+            Configuration
+        **/
+        pkg: grunt.file.readJSON('package.json'),
+
+
+        /**
+            Paths
+            Use ex: '<%= path.src.js %>/main.js' -> 'src/js/main.js'
+        **/
+        path: {
+            // Source
+            src: {
+                css: 'sass',
+                img: 'images',
+                js: 'js',
+                html: 'html'
+            },
+
+            // Distribution
+            dist: {
+                css: 'dist/assets/css',
+                img: 'dist/assets/images',
+                js: 'dist/assets/js',
+                html: 'dist'
+            }
+        },
+
+
+        /**
+            Watch our files for changes and live-reload
+            https://github.com/gruntjs/grunt-contrib-watch
+        **/
         watch: {
-            grunt: { 
-                files: ['Gruntfile.js'],
+            options: {
+                livereload: true,
+            },
+
+            gruntfile: {
+                files: 'Gruntfile.js',
                 options: {
                     reload: true
                 }
             },
 
-            sass: {
-                files: ['src/stylesheets/**/*.sass', 'src/stylesheets/**/*.scss'],
-                tasks: ['sass']
+            css: {
+                files: ['<%= path.src.css %>/**/*.{sass,scss,css}'],
+                tasks: ['sass', 'postcss:default'],
+                options: {
+                    livereload: true,
+                },
             },
 
-            uglify: {
-                files: ['src/js/*.js'],
-                tasks: ['uglify']
-            }
+            js: {
+                files: '<%= path.src.js %>/**/*.js',
+                tasks: ['uglify:default'],
+            },
+
+            html: {
+                files: '<%= path.src.html %>/**/*.html',
+                tasks: ['includes'],
+                options: {
+                    livereload: true,
+                },
+            },
         },
 
 
-        // SASS
+        /**
+            Compile our SASS
+            https://github.com/sindresorhus/grunt-sass
+        **/
         sass: {
             options: {
                 outputStyle: 'expanded',
-                includePaths: ['bower_components/bourbon/app/assets/stylesheets']
+                sourceMap: true,
             },
             default: {
                 files: {
-                    'assets/css/main.css': 'src/stylesheets/main.sass'
+                    '<%= path.dist.css %>/main.css': '<%= path.src.css %>/main.sass'
                 }
             }
         },
 
 
-        // Uglify - JavaScript Combiner / Compresser 
-        uglify: {
-            default: {
-                options: {
-                    mangle: false,
-                    screwIE8: true,
-                    beautify: {
-                        width: 50,
-                        beautify: true
-                    }
-                },
-                files: {
-
-                    // Main
-                    'assets/js/main.min.js': ['src/js/navigation.js', 'src/js/smoothscroll.js', 'src/js/svg4everybody.js', 'src/js/vivus.js'],
-
-                    // For mobile
-                    'assets/js/mobile.min.js': ['src/js/fastclick.js'],
-
-                    // Polyfills/Fixes
-                    'assets/js/respond.min.js': 'src/js/respond.js',
-                    'assets/js/svg4everybody.min.js': 'src/js/svg4everybody.js',
-
-                    // Vendor
-                    'assets/js/vendor/modernizr.min.js': 'src/js/vendor/modernizr.js',
-                    
-                }
-            },
-            // Uglify - Production
-            build: {
-                options: {
-                    screwIE8: true
-                },
-                files: ['<%= uglify.default.files %>']
-            }
-        },
-
-
-        // SVG STORE - Crate SVG Sprite
-        svgstore: {
-            options: {
-                cleanup: true,
-                inheritviewbox: true,
-                svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
-                    xmlns: 'http://www.w3.org/2000/svg'
-                }
-            },
-            default: {
-                files: {
-                    'assets/images/svg-sprite.svg': ['src/svg/*.svg']
-                }
-            },
-        },
-
-
-        // Combine Media Queries
-        cmq: {
-            default: {
-                files: {
-                    'assets/css/main.css': ['assets/css/main.css']
-                }
-            }
-        },
-
-
-        // Add Fallback units for older browsers
+        /**
+            Finish off our CSS with PostCSS (& plugins)
+            https://github.com/nDmitry/grunt-postcss
+        **/
         postcss: {
-            options: {
-                processors: [
-                    require('pixrem')(), // add fallbacks for rem units
-                    //require('autoprefixer')({browsers: ['last 2 versions', 'ie 8', 'ie 9', 'Android 2.3']}), // add vendor prefixes
-                    //require('cssnano')(), // minify the result
-                ]
-            },
             default: {
-                src: 'assets/css/main.css'
+                options: {
+                    processors: [
+                        require('autoprefixer')({browsers: ['last 2 versions']}),
+                    ]
+                },
+                src: '<%= path.dist.css %>/*.css',
+            },
+            dist: {
+                options: {
+                    processors: [
+                        /**
+                         * Plugins:
+                         *
+                         * AutoPrefixer: 
+                         * Pixrem: https://github.com/robwierzbowski/node-pixrem
+                         * CSSNano: https://github.com/ben-eb/cssnano
+                         * CSS MqPacker: https://github.com/hail2u/node-css-mqpacker
+                         */
+                        require('autoprefixer')({ // Add vendor prefixes
+                            browsers: [
+                                'last 2 versions',
+                                'ie 8-9',
+                            ]
+                        }),
+                        require('pixrem')(),                    // Add fallback units for rem
+                        require('cssnano')(),                   // Minify our css
+                        require('css-mqpacker')({sort: true}),  // Combine media queries
+                    ]
+                },
+                src: '<%= path.dist.css %>/*.css',
             }
         },
 
 
-        // Minify Our CSS
-        cssmin: {
+        /**
+            Minify our images
+            https://github.com/gruntjs/grunt-contrib-imagemin
+        **/
+        imagemin: {
             default: {
+                options: {
+                    optimizationLevel: 5
+                },
                 files: [{
                     expand: true,
-                    cwd: 'assets/css',
-                    src: ['*.css', '!*.min.css'],
-                    dest: 'assets/css',
-                    ext: '.min.css'
+                    cwd: '<%= path.src.img %>/',
+                    src: ['**/*.{png,jpg,jpeg,gif,svg}'],
+                    dest: '<%= path.dist.img %>'
                 }]
-                /*files: {
-                    'assets/css/main.css': ['assets/css/main.css']
-                }*/
-            },
+            }
         },
+
+
+        /**
+            Concatenate HTML files
+            https://github.com/vanetix/grunt-includes
+        **/
+        includes: {
+            default: {
+                files: [{
+                    cwd: '<%= path.src.html %>/',
+                    src: '*.html',
+                    dest: '<%= path.dist.html %>',
+                    flatten: true
+                }]
+            }
+        },
+
 
     });
 
 
+    /**
+     * Load Grunt tasks automatically
+     */
+    require('load-grunt-tasks')(grunt);
 
 
+    /**
+     * Register tasks
+     */
 
-// Tasks
-grunt.loadNpmTasks('grunt-sass');
-grunt.loadNpmTasks('grunt-contrib-watch');
-grunt.loadNpmTasks('grunt-contrib-uglify');
-grunt.loadNpmTasks('grunt-svgstore');
-grunt.loadNpmTasks('grunt-combine-media-queries');
-grunt.loadNpmTasks('grunt-postcss');
-grunt.loadNpmTasks('grunt-contrib-cssmin');
+    // Build our CSS and JS files
+    grunt.registerTask('build', ['includes', 'sass', 'postcss:default']);
 
+    // Watch our files and compile if any changes
+    grunt.registerTask('default', ['build', 'watch']);
 
-// Quick Compilation - Build Our SASS
-grunt.registerTask('build', ['sass']);
+    // Production - Build the files for production use
+    grunt.registerTask('production', ['includes', 'sass', 'postcss:dist', 'imagemin']);
 
-// Developement - Watch & Build Our SASS Files
-grunt.registerTask('default', ['build', 'watch']);
-
-// Production - Build the files for production use
-grunt.registerTask('production', ['build', 'uglify:build', 'svgstore', 'cmq', 'postcss', 'cssmin']);
-
-};
+}

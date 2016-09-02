@@ -1,7 +1,5 @@
-thumbs/
-content/
-bower_components/
 node_modules/
-assets/
+dist/*
 
+.DS_Store
 .sass-cache

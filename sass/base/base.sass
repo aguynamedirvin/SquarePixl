@@ -1,0 +1,36 @@
+//  --------------------------------------------------------------
+//  Note: HTML is set to 62.5% so that all the REM measurements
+//  are based on a 10px sizing. Basically 1.5rem = 15px (=
+//  --------------------------------------------------------------
+
+/* ------------------------------------
+    Base
+ ------------------------------------*/
+
+html, body
+    height: 100%
+
+html
+    font-size: 62.5%
+
+body
+    color: getColor(dark)
+    font:
+        family: $font-family
+        size: 1.6em
+    line-height: 1.8
+    text-rendering: optimizeLegibility
+
+img, figure
+    height: auto
+    max-width: 100%
+
+img
+    vertical-align: top
+
+a
+    color: $link
+    text-decoration: none
+
+    &:hover
+        color: $link-hover

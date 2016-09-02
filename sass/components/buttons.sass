@@ -1,0 +1,31 @@
+/* ---------------------------------------------
+        Buttons
+ ----------------------------------------------- */
+
+.btn
+    appearance: none
+    display: inline-block
+    color: getColor(primary)
+    cursor: pointer
+    border: 1px solid getColor(primary)
+    background-color: transparent
+    height: 3.2rem
+    line-height: 1.6rem
+    padding: .7rem 3rem
+    text-align: center
+    text-decoration: none
+    outline: none
+    font-size: $size-6
+    user-select: none
+    vertical-align: middle
+    white-space: nowrap
+
+    &:hover,
+    &:focus
+        text-decoration: none
+        color: #fff
+        background-color: getColor(primary)
+
+    &[disabled],
+    &.disabled
+        cursor: not-allowed
